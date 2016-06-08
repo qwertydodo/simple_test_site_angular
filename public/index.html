@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="app">
+   <head>
+        <link rel="stylesheet" type='text/css' href="vendor/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type='text/css' href="./css/styles.css"/>
+        <title ng-bind="$state.current.title + ' | Site Name'">Site Name</title>
+   </head>
+   
+    <body>
+        <div id="wrapper" class="container">
+            <header>
+                <div class="row">
+                    <div class="logo col-md-3">
+                        <div class="logo_top">The Best News on</div>
+                        <div class="logo_bottom">YourNews</div>
+                    </div>
+                    <div class="col-md-5 pull-right">
+                      <nav class="nav_main-container">
+                            <ul>
+                                <li ui-sref-active="nav_main-active" ><a ui-sref="main">Main page</a></li>
+                                <li ui-sref-active="nav_main-active"><a ui-sref="newsAll">News</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <main ui-view>
+               
+            </main>
+            <footer>
+               <p class="text_engraved">Copyright (c) 2016</p>
+            </footer>
+        </div>
+
+        <script src = "./vendor/angular/angular.min.js"></script> 
+        <script src = "./vendor/angular-ui-router/release/angular-ui-router.min.js"></script> 
+        <script src = "./js/app.js"></script>
+
+    </body>
+</html>

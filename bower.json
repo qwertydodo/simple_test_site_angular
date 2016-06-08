@@ -1,0 +1,10 @@
+{
+	"name": "news_site",
+	"dependencies": {
+		"jquery": "*",
+    	"bootstrap": "3.3.6",
+    	"bootstrap3-dialog": "1.35.1",
+    	"angular": "*",
+    	"angular-ui-router": "*"
+  	}	
+}

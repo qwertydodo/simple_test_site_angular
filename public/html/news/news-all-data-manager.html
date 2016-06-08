@@ -1,0 +1,21 @@
+<div class="newsDataManager_container">
+    <span>Filter by</span>
+    <select class="newsDataManager_filter" 
+            ng-change="newsAll.manageData()" 
+            ng-model="newsAll.dataManager.filter"
+    >
+        <option value="none">None</option>
+        <option value="category_music">Music</option>
+        <option value="category_sport">Sport</option>
+        <option value="category_social">Social</option>
+    </select>
+    <span>Order By</span>
+    <select class="newsDataManager_order" 
+            ng-change="newsAll.manageData()" 
+            ng-model="newsAll.dataManager.order"
+    >
+        <option value="none">None</option>
+        <option value="dt_asc">Ascending Date</option>
+        <option value="dt_desc">Descending Date</option>
+    </select>
+</div>
