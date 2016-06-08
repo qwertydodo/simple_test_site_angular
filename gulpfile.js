@@ -5,11 +5,12 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     jshint = require('gulp-jshint'),
     htmlmin  = require('gulp-htmlmin'),
-    jade = require('gulp-jade'),
     bower = require('gulp-bower'),
     clean = require('gulp-clean'),
-    browserify = require('browserify'),
-    source = require('vinyl-source-stream'),
+    sourcemaps = require('gulp-sourcemaps'),
+    ngAnnotate = require('gulp-ng-annotate'),
+    //browserify = require('browserify'),
+    //source = require('vinyl-source-stream'),
     exec = require('child_process').exec,
     FOLDER_BUILD = './build',
     FOLDER_DEV = './public';
@@ -26,8 +27,11 @@ gulp.task('browserSync', function () {
 gulp.task('js', function () {
     console.log(FOLDER_DEV + '/js/**/*.js');
     gulp.src([FOLDER_DEV + '/js/**/*.js'])
-        .pipe(concat('app.js'))
-        //.pipe(uglify())
+        .pipe(sourcemaps.init())
+            .pipe(concat('app.js'))
+            .pipe(ngAnnotate())
+            .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(FOLDER_BUILD + '/js'))
         .pipe(browserSync.reload({
             stream: true
@@ -82,7 +86,7 @@ gulp.task('server', function () {
     });
 });
 
-gulp.task('browserify', function() {
+/*gulp.task('browserify', function() {
     browserify(FOLDER_DEV + '/js/app.js')
         .bundle()
         // Передаем имя файла, который получим на выходе, vinyl-source-stream
@@ -91,7 +95,7 @@ gulp.task('browserify', function() {
         .pipe(browserSync.reload({
             stream: true
         }));
-});
+});*/
 
 /*gulp.task('lint', function() {
     gulp.src([FOLDER_DEV + '/js/*.js'])
@@ -102,21 +106,19 @@ gulp.task('browserify', function() {
 gulp.task('watch', ['build', 'browserSync'], function () {
     
     gulp.watch(FOLDER_DEV + '/**/*.html', ['html']);
-    //gulp.watch(FOLDER_DEV + '/js/**/*.js', ['js']);
     gulp.watch(FOLDER_DEV + '/js/**/*.js', ['js']);
     gulp.watch(FOLDER_DEV + '/less/*.less', ['less']);
 });
 
 gulp.task('build', function () {
     //gulp.run('clean');
+    //gulp.run('browserify');
     
     gulp.run('html');
     gulp.run('js');
-    //gulp.run('browserify');
     gulp.run('less');
     gulp.run('img');
     gulp.run('font');
-
     gulp.run('bower');
 	
 	gulp.run('server');
