@@ -2,7 +2,7 @@
 	 var app = angular.module('app');
 
 	  app
-        .constant('config', {
+        .constant('appConfig', {
             'URL_SERVER': 'http://localhost:5000'
         });
 })();

@@ -9,11 +9,15 @@ var gulp = require('gulp'),
     clean = require('gulp-clean'),
     sourcemaps = require('gulp-sourcemaps'),
     ngAnnotate = require('gulp-ng-annotate'),
+    jsdoc = require('gulp-jsdoc3'),
     //browserify = require('browserify'),
     //source = require('vinyl-source-stream'),
     exec = require('child_process').exec,
+    fs = require('fs'),
     FOLDER_BUILD = './build',
-    FOLDER_DEV = './public';
+    FOLDER_DEV = './public',
+    FOLDER_LOG = './log',
+    FOLDER_DOCS = './docs';
 
 gulp.task('browserSync', function () {
     browserSync.init({
@@ -30,7 +34,7 @@ gulp.task('js', function () {
         .pipe(sourcemaps.init())
             .pipe(concat('app.js'))
             .pipe(ngAnnotate())
-            .pipe(uglify())
+            //.pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(FOLDER_BUILD + '/js'))
         .pipe(browserSync.reload({
@@ -97,11 +101,22 @@ gulp.task('server', function () {
         }));
 });*/
 
-/*gulp.task('lint', function() {
-    gulp.src([FOLDER_DEV + '/js/*.js'])
+gulp.task('lint', function() {
+
+    gulp.src(FOLDER_DEV + '/js/**/*.js')
         .pipe(jshint())
-        .pipe( jshint.reporter('gulp-jshint-file-reporter') );
-});*/
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('gulp-jshint-file-reporter', {
+            filename: FOLDER_LOG + '/jshint-errors.log'
+        }));
+        //.pipe(jshint.reporter('fail'));
+});
+
+gulp.task('doc', function (cb) {
+    gulp.src(FOLDER_DEV + '/js/**/*.js', {read: false})
+        .pipe(jsdoc(cb))
+        .pipe(gulp.dest(FOLDER_DOCS));
+});
 
 gulp.task('watch', ['build', 'browserSync'], function () {
     
@@ -109,6 +124,7 @@ gulp.task('watch', ['build', 'browserSync'], function () {
     gulp.watch(FOLDER_DEV + '/js/**/*.js', ['js']);
     gulp.watch(FOLDER_DEV + '/less/*.less', ['less']);
 });
+
 
 gulp.task('build', function () {
     //gulp.run('clean');
@@ -120,6 +136,12 @@ gulp.task('build', function () {
     gulp.run('img');
     gulp.run('font');
     gulp.run('bower');
-	
-	gulp.run('server');
+    
+    gulp.run('server');
 });
+
+function createDir(dir) {
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+}

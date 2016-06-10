@@ -1,16 +1,13 @@
 (function() {
-    
     var app = angular.module('app');
     app
        .config(function($stateProvider, $urlRouterProvider ) {
             
-           $urlRouterProvider.otherwise('/main');
-           
+            $urlRouterProvider.otherwise('/main');
             $stateProvider
                 .state('main', {
                     url: '/main',
-                    templateUrl: 'html/main.html',
-                    title: 'test'
+                    templateUrl: 'html/main.html'
                 })
                 .state('newsAll', {
                     url: '/news',
@@ -23,3 +20,4 @@
         });
 
 })();
+
