@@ -32,12 +32,12 @@
          *@param {Object} ajaxParams Parameters for ajax requests to server
         */
 		news.setNewsAll = function(ajaxParams) {
-			newsFactory
+			return newsFactory
 				.getNews(ajaxParams)
-				.success(function(data) {
-					news.rows = data.rows;
+				.then(function(res) {
+					news.rows = res.data.rows;
 				})
-				.error(function() {});
+				.catch(function() {});
 		};
 
 		/**
@@ -51,6 +51,10 @@
 		};
 
 		news.setNewsAll();
+
+		news.getStrFactory = function() {
+			return newsFactory.getStr();
+		};
 	};
 
 	app.controller('NewsAllController', NewsAllController); 

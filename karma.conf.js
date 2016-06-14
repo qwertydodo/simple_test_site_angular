@@ -20,7 +20,8 @@ module.exports = function(config) {
 	  './node_modules/angular-mocks/angular-mocks.js',
 	  './build/**/*.html',
 	  './build/js/**/*.js',
-	  './test/*.spec.js'
+	  './test/**/*.spec.js',
+    './test/**/*.mock.js'
     ],
 
 
@@ -33,7 +34,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
 		'./build/**/*.html': ['ng-html2js'],
-		'./build/**/!(*.mock|*.spec).js': ['coverage']
+		'./build/js/app.js': ['coverage', 'sourcemap']
     },
 	
 	ngHtml2JsPreprocessor: {
@@ -47,19 +48,19 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage', 'html'],
 
-	 htmlReporter: {
-      outputFile: './test/TestResult.html',
+	  htmlReporter: {
+      outputFile: './test/result/TestResult.html',
 			
       // Optional 
       pageTitle: 'Unit Tests'
     },
 	
-	coverageReporter: {
+	  coverageReporter: {
       type : 'html',
       // output coverage reports
-      dir : './test/'
+      dir : './test/result/Coverage'
     },
 	
     // web server port

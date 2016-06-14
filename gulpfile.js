@@ -14,10 +14,12 @@ var gulp = require('gulp'),
     //source = require('vinyl-source-stream'),
     exec = require('child_process').exec,
     fs = require('fs'),
+    KarmaServer = require('karma').Server,
     FOLDER_BUILD = './build',
     FOLDER_DEV = './public',
     FOLDER_LOG = './log',
-    FOLDER_DOCS = './docs';
+    FOLDER_DOCS = './docs',
+    FOLDER_TEST = './test';
 
 gulp.task('browserSync', function () {
     browserSync.init({
@@ -107,7 +109,7 @@ gulp.task('lint', function() {
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(jshint.reporter('gulp-jshint-file-reporter', {
-            filename: FOLDER_LOG + '/jshint-errors.log'
+            filename: FOLDER_TEST + '/result/jshint-errors.log'
         }));
         //.pipe(jshint.reporter('fail'));
 });
@@ -125,6 +127,18 @@ gulp.task('watch', ['build', 'browserSync'], function () {
     gulp.watch(FOLDER_DEV + '/less/*.less', ['less']);
 });
 
+
+gulp.task('karma', function (done) {
+    new KarmaServer({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done).start();
+});
+
+gulp.task('test', function() {
+    gulp.run('lint');
+    gulp.run('karma');
+});
 
 gulp.task('build', function () {
     //gulp.run('clean');

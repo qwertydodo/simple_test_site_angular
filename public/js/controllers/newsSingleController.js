@@ -25,7 +25,7 @@
 
 		news.id = $stateParams.id;
 		news.viewFields = null;
-		news.editField = null;
+		news.editFields = null;
 		news.isEdit = false;
 		news.categoryOpts = [
 			{ name: 'Sport', id: 'sport'},
