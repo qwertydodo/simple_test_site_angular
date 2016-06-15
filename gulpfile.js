@@ -15,6 +15,7 @@ var gulp = require('gulp'),
     exec = require('child_process').exec,
     fs = require('fs'),
     KarmaServer = require('karma').Server,
+    cucumber = require('gulp-cucumber'),
     FOLDER_BUILD = './build',
     FOLDER_DEV = './public',
     FOLDER_LOG = './log',
@@ -31,7 +32,6 @@ gulp.task('browserSync', function () {
 });
 
 gulp.task('js', function () {
-    console.log(FOLDER_DEV + '/js/**/*.js');
     gulp.src([FOLDER_DEV + '/js/**/*.js'])
         .pipe(sourcemaps.init())
             .pipe(concat('app.js'))
@@ -135,9 +135,18 @@ gulp.task('karma', function (done) {
     }, done).start();
 });
 
+gulp.task('cucumber', function() {
+    var path = FOLDER_TEST + '/e2e/features'; 
+    return gulp.src(path + '/*').pipe(cucumber({
+        'steps': path + '/steps/*.js',
+        'format': 'summary'
+    }));
+});
+
 gulp.task('test', function() {
     gulp.run('lint');
     gulp.run('karma');
+    gulp.run('cucumber');
 });
 
 gulp.task('build', function () {

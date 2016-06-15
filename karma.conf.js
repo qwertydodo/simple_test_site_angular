@@ -51,7 +51,7 @@ module.exports = function(config) {
     reporters: ['progress', 'coverage', 'html'],
 
 	  htmlReporter: {
-      outputFile: './test/result/TestResult.html',
+      outputFile: './test/unit/result/TestResult.html',
 			
       // Optional 
       pageTitle: 'Unit Tests'
@@ -60,7 +60,7 @@ module.exports = function(config) {
 	  coverageReporter: {
       type : 'html',
       // output coverage reports
-      dir : './test/result/Coverage'
+      dir : './test/unit/result/Coverage'
     },
 	
     // web server port
