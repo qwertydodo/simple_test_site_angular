@@ -7,15 +7,18 @@
             $stateProvider
                 .state('main', {
                     url: '/main',
-                    templateUrl: 'html/main.html'
+                    templateUrl: 'html/main.html',
+                    title: 'Main'
                 })
                 .state('newsAll', {
                     url: '/news',
-                    templateUrl: 'html/news/news-all-page.html'    
+                    templateUrl: 'html/news/news-all-page.html',
+                    title: 'News'    
                 })
                 .state('newsSingle', {
                     url: '/news/:id',
-                    templateUrl: 'html/news/news-single-page.html'
+                    templateUrl: 'html/news/news-single-page.html',
+                    title: 'Single News'
                 });
         });
 
