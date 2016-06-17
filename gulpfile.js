@@ -10,6 +10,7 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     ngAnnotate = require('gulp-ng-annotate'),
     jsdoc = require('gulp-jsdoc3'),
+    argv = require('yargs').argv,
     //browserify = require('browserify'),
     //source = require('vinyl-source-stream'),
     exec = require('child_process').exec,
@@ -137,9 +138,11 @@ gulp.task('karma', function (done) {
 
 gulp.task('cucumber', function() {
     var path = FOLDER_TEST + '/e2e/features'; 
+    console.log(argv.tags);
     return gulp.src(path + '/*').pipe(cucumber({
-        'steps': path + '/steps/*.js',
-        'format': 'summary'
+        steps: path + '/steps/*.js',
+        format: 'summary',
+        tags: argv.tags || ''
     }));
 });
 

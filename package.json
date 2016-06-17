@@ -8,6 +8,8 @@
     "browser-sync": "2.12.7",
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "chromedriver": "^2.21.2",
     "cors": "^2.7.1",
     "cucumber": "^1.0.0",
     "express": "4.13.4",
@@ -34,7 +36,10 @@
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
-    "phantomjs-prebuilt": "^2.1.7"
+    "phantomjs-prebuilt": "^2.1.7",
+    "sanitize-filename": "^1.6.0",
+    "selenium-webdriver": "^2.53.2",
+    "yargs": "^4.7.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/cucumber-js"
