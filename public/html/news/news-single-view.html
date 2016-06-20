@@ -3,14 +3,14 @@
         <img ng-src="{{newsSingle.viewFields.img}}">
     </div>
     <div>
-        <h1 class="newsItem_field newsItem_field-header">{{newsSingle.viewFields.header}}</h1>
+        <h1 class="newsItem_field" data-field-name='header'>{{newsSingle.viewFields.header}}</h1>
     </div>
     <div>
-        <span class="newsItem_field newsItem_field-dt text_caption">{{newsSingle.viewFields.dt}}</span>
-        <span class="newsItem_field newsItem_field-category label_default">{{newsSingle.viewFields.category}}</span>
+        <span class="newsItem_field newsItem_field-dt text_caption" data-field-name='dt'>{{newsSingle.viewFields.dt}}</span>
+        <span class="newsItem_field newsItem_field-category label_default" data-field-name='category'>{{newsSingle.viewFields.category}}</span>
     </div>
     <div>
-        <span class="newsItem_field newsItem_field-text">{{newsSingle.viewFields.text}}</span>
+        <span class="newsItem_field newsItem_field-text" data-field-name='text'>{{newsSingle.viewFields.text}}</span>
     </div> 
     <div class="newsItem_actions">
         <button class="newsItem_button-back btn btn-default" ui-sref="newsAll" >Back</button>

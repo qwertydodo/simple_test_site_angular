@@ -13,8 +13,8 @@ module.exports = function() {
 
     this.When(/^I click the "([^"]*)" link$/, function(linkName) {
         return this.browser
-                .findElement(By.partialLinkText(linkName))
-                .click()
+            .findElement(By.partialLinkText(linkName))
+            .click()
     });
  
     this.Then(/^I should see the page with the title "([^"]*)"$/, function (title) {

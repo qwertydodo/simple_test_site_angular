@@ -20,7 +20,7 @@ var myHooks = function () {
     });
 
     this.registerHandler('AfterFeatures', function (event) {
-        //return browser.quit();
+        return browser.quit();
     });
 };
 

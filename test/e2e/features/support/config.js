@@ -1,6 +1,5 @@
 var config = {
-	url: 'localhost:3000',
-	stepTimeout: '1000'
+	url: 'localhost:3000'
 };
 
 config.pages = {
@@ -17,7 +16,8 @@ config.elems = {
     NEWS_CATEGORY_CLS: 'newsItem_field-category',
     NEWS_DATE_CLS: 'newsItem_field-dt',
     NEWS_HEADER_CLS: 'newsItem_field-header',
-    NEWS_ITEM_CONTAINER: 'newsItem_container'
+    NEWS_ITEM_CONTAINER: 'newsItem_container',
+    NEWS_ITEM_FIELD: 'newsItem_field'
 }
 
 module.exports = config;
