@@ -1,4 +1,5 @@
 var utils = {},
+    config = require('./config'),
     browser = require('./world.js').getBrowser();
 
 /**
@@ -74,9 +75,9 @@ utils.getTextFieldValue = function(field) {
 /**
  * Get the value of the text from array of fields and transfom to single object
  * @return {
- *              fieldName: value, 
- *              ...
- *          }
+ *           fieldName1: value, 
+ *           ...
+ *         }
 */
 utils.getTextFieldsValue = function(fieldsWebEl) {
     var promises = [],
@@ -91,6 +92,15 @@ utils.getTextFieldsValue = function(fieldsWebEl) {
         });
 
         return result;
+    });
+};
+
+utils.delay = function(time) {
+    time = time || config.scenarioTimeout;
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve();
+        }, time);
     });
 };
 

@@ -1,5 +1,7 @@
 var config = {
-	url: 'localhost:3000'
+	url: 'localhost:3000',
+	scenarioTimeout: '200',
+	loadPageTimeout: '300'
 };
 
 config.pages = {

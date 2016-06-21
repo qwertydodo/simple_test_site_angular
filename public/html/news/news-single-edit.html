@@ -1,5 +1,5 @@
 <div class="newsItem_edit" ng-show="newsSingle.isEdit">
-      <form class="form-dlg" name="newsSingleForm" ng-submit="newsSingle.submitNewsSingle()" novalidate>
+      <form name="newsSingleForm" ng-submit="newsSingle.submitNewsSingle()" novalidate>
           <div class="form-group row" 
                ng-class="(newsSingleForm.header.$invalid && !newsSingleForm.header.$pristine) ? 'has-error' : ''">
             <label for="newsHeader" class="col-sm-2 form-control-label">Header</label>
