@@ -138,8 +138,8 @@ gulp.task('karma', function (done) {
 
 gulp.task('cucumber', function() {
     var path = FOLDER_TEST + '/e2e/features'; 
-    console.log(argv.tags);
-    return gulp.src(path + '/*').pipe(cucumber({
+    
+    gulp.src(path + '/*').pipe(cucumber({
         steps: path + '/steps/*.js',
         format: 'summary',
         tags: argv.tags || ''
