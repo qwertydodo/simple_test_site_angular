@@ -110,7 +110,7 @@ gulp.task('lint', function() {
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(jshint.reporter('gulp-jshint-file-reporter', {
-            filename: FOLDER_TEST + '/result/jshint-errors.log'
+            filename: FOLDER_TEST + '/jshint-errors.log'
         }));
         //.pipe(jshint.reporter('fail'));
 });
