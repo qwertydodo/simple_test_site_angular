@@ -1,5 +1,4 @@
-var fs = require('fs'),
-    Webdriver = require('selenium-webdriver'),
+var Webdriver = require('selenium-webdriver'),
     browser,
     platform = "CHROME",
     chai = require('chai'),
