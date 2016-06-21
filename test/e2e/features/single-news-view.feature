@@ -8,10 +8,10 @@ Feature: View single news
         Given The "singleNews" page opened
 
     Scenario: Open the single news edit form 
-        When I am click on the "Edit" button under the single news
+        When I click on the "Edit" button under the single news
         Then I should see the news edit form
 
     Scenario: Back to the news page 
-        When I am click on the "Back" button under the single news
+        When I click on the "Back" button under the single news
         Then I should see the page with the title "News"
 

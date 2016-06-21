@@ -1,29 +1,29 @@
 angular.module('mock.factory', [])
 	.factory('newsFactory', function($q) {
 		var res = {
-					 	data: {
-							rows: [
-									{
-										id: "test1",
-										header: "test1",
-										prevtext: "test1",
-										text: "test1",
-										dt: "test1",
-										img: "test1",
-										category: "test1"
-									},
-									{
-										id: "test2",
-										header: "test2",
-										prevtext: "test2",
-										text: "test2",
-										dt: "test2",
-										img: "test2",
-										category: "test2"
-									}
-								]
-						}
-				};
+			 	data: {
+					rows: [
+							{
+								id: "test1",
+								header: "test1",
+								prevtext: "test1",
+								text: "test1",
+								dt: "test1",
+								img: "test1",
+								category: "test1"
+							},
+							{
+								id: "test2",
+								header: "test2",
+								prevtext: "test2",
+								text: "test2",
+								dt: "test2",
+								img: "test2",
+								category: "test2"
+							}
+						]
+				}
+			};
 
 		return {
 			getNews: function(ajaxParams) {
